@@ -3,7 +3,7 @@ Experitest - Disk space validator ansible role
 
 [![Build Status](https://travis-ci.org/ExperitestOfficial/ansible-role-disk-space-validator.svg?branch=master)](https://travis-ci.org/ExperitestOfficial/ansible-role-disk-space-validator)
 
-This role will install \ uninstall disk-space-validator (or alternatives) in all platforms
+This role will install \ uninstall disk-space-validator (or alternatives) in all platforms. \
 The role will fail if the free space is less the required mb.
 
 Requirements
