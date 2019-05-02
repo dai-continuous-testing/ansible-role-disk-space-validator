@@ -17,4 +17,4 @@ Role Variables
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | required_space_mb | the required free space in mb | number |  | yes |
-| drive_letter | the letter of the disk to test | string |  | for windows only |
+| drive_letter | the letter of the disk to test | string | c | for windows only |
