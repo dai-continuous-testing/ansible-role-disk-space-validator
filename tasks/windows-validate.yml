@@ -1,0 +1,24 @@
+---
+
+- name: assert all vars are set
+  assert: 
+    that: "{{ item }} != '' "
+  with_items:
+    - required_space_mb
+
+- name: get disk facts
+  win_disk_facts:
+
+- name: calc free size
+  win_drive_letter_to_disk_info:
+    drive_letter: "{{ drive_letter | default('c') }}"
+    disks: "{{ ansible_facts.disks }}"
+  delegate_to: localhost
+  register: result
+
+- name: validate required
+  assert:
+    that:
+      - result.free_disk_space.mib|int > required_space_mb|int
+    fail_msg: "free space test failed: {{ result.free_disk_space.mib }} < {{ required_space_mb }}"
+    success_msg: free space test passed

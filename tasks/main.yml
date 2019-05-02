@@ -1,0 +1,4 @@
+---
+
+- name: validate
+  include_tasks: "tasks/{{ ansible_os_family | lower }}-validate.yml"
