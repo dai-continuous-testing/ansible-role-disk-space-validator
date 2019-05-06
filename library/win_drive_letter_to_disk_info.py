@@ -12,9 +12,13 @@ def get_partition_by_letter(drive_letter):
     
     def f(disk):
         for partition in disk["partitions"]:
-            for access_path in partition["drive_letter"]:
-                if partition["drive_letter"].lower() == drive_letter.lower():
-                    return partition 
+
+            actual_drive_letter = partition["drive_letter"] or ""
+            expected_drive_letter = drive_letter or ""
+
+            if actual_drive_letter.lower() == expected_drive_letter.lower():
+                return partition
+
         return None
 
     return f
