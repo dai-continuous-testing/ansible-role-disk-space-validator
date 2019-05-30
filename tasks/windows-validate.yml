@@ -21,4 +21,4 @@
     that:
       - result.free_disk_space.mib|int > required_space_mb|int
     fail_msg: "free space test failed: {{ result.free_disk_space.mib }} < {{ required_space_mb }}"
-    success_msg: free space test passed
+    success_msg: "free space test passed: {{ result.free_disk_space.mib }}"

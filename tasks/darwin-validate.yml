@@ -6,7 +6,9 @@
   with_items:
     - required_space_mb
 
-- shell: df -Hm /Applications | tail -n 1 | awk {'print $4 '} 
+- name: get free space
+  shell: df -Hm /Applications | tail -n 1 | awk {'print $4 '} 
+  changed_when: no
   register: test
 
 - set_fact: 
@@ -17,4 +19,4 @@
     that:
       - free_space_mb|int > required_space_mb|int
     fail_msg: "free space test failed: {{ free_space_mb }} < {{ required_space_mb }}"
-    success_msg: free space test passed
+    success_msg: "free space test passed: {{ free_space_mb }}"
