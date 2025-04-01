@@ -2,8 +2,11 @@
 
 - name: assert all vars are set
   assert: 
-    that: "{{ item }} != '' "
-  with_items:
+    that:
+      - item is defined
+      - item | length > 0
+    quiet: true
+  loop:
     - required_space_mb
 
 - name: get free space
